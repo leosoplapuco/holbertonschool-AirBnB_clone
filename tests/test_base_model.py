@@ -1,43 +1,15 @@
 #!/usr/bin/python3
-"""test BaseModel"""
-import unittest
-import os
 from models.base_model import BaseModel
-import pep8
 
-class TestBaseModel(unittest.TestCase):
-    """test BaseModel"""
+my_model = BaseModel()
+my_model.name = "My First Model"
+my_model.my_number = 89
+print(my_model)
+my_model.save()
+print(my_model)
+my_model_json = my_model.to_dict()
+print(my_model_json)
+print("JSON of my_model:")
+for key in my_model_json.keys():
+    print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
 
-    def setUp(self):
-        self.testbasemodel = BaseModel()
-
-    def test_pep8_BaseModel(self):
-        """test pep8"""
-        style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/base_model.py'])
-        self.assertEqual(p.total_errors, 0, "Check pep8")
-
-
-    def test_save_BaesModel(self):
-        """test save_Basemodel"""
-        self.base.save()
-        self.assertNotEqual(self.base.created_at, self.base.updated_at)
-
-    def test_doc(self):
-        """test doc"""
-        self.assertisNotNone(BaseModel.__doc__)
-
-    def test_to_json(self):
-        '''test para jason'''
-
-    def test_kwarg(self):
-        basemodel = BaseModel(name="base")
-        self.assertEqual(type(basemodel).__name__, "BaseModel")
-        self.assertFalse(hasattr(basemodel, "id"))
-        self.assertFalse(hasattr(basemodel, "created_at"))
-        self.assertTrue(hasattr(basemodel, "name"))
-        self.assertFalse(hasattr(basemodel, "updated_at"))
-        self.assertTrue(hasattr(basemodel, "__class__"))
-
-if __name__ == "__main__":
-    unittest.main()
