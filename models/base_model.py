@@ -25,3 +25,27 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
             models.storage.new(self)
+
+    def to_dict(self):
+        """definicion to_dict"""
+        
+        dic = {}
+        for key, item in self.__dict__.items():
+            if key in ['created_at', 'updated_at']:
+                dic[key] = item
+
+        dic['__class__'] = self.__class__.__name__
+        dic['created_at'] = self.created_at.isoformat()
+        dic['updated_at'] = self.updated_at.isoformat()
+        return dic
+
+    def __str__(self):
+        """definicion str"""
+        return("[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__))
+
+    def save(self):
+        """definicion save"""
+        self.updated_at = datetime.now()
+        models.storage.new(self)
+        models.storage.save()
