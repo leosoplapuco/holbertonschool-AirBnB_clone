@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """clase FileStorage"""
+
+import models.engine.file_storage
 from json import dump, load, dumps
 from os.path import exists
 from models import base_model, user, place, state, city, amenity, review
