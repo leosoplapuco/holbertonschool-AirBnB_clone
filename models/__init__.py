@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""instancias para el FileStorage"""
+"""instancia FileStorage"""
+
 
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
