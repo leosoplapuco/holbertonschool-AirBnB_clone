@@ -1,52 +1,29 @@
 #!/usr/bin/python3
-"""módulo para Base """
-
-import uuid
-from datetime import datetime
-from uuid import uuid4
-import models
-import json
-
-format_dt = "%Y-%m-%dT%H:%M:%S.%f"
-
 
 class BaseModel:
-    """clase Basemodel"""
-    def __init__(self, *args, **kwargs):
-        """inicio de la Database"""
-        if args is not None and len(args) > 0:
-            pass
-        if kwargs:
-            for key, item in kwargs.items():
-                if key in ['created_at', 'updated_at']:
-                    item = datetime.strptime(item, format_dt)
-                if key not in ['__class__']:
-                    setattr(self, key, item)
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = self.updated_at = datetime.now()
-            models.storage.new(self)
+  """
+  A base class for all models.
 
-    def to_dict(self):
-        """definición de to_dict"""
-        
-        dic = {}
-        for key, item in self.__dict__.items():
-            if key in ['created_at', 'updated_at']:
-                dic[key] = item
+  Attributes:
+    id (str): The unique identifier of the model.
+    created_at (datetime): The date and time the model was created.
+    updated_at (datetime): The date and time the model was last updated.
+  """
 
-        dic['__class__'] = self.__class__.__name__
-        dic['created_at'] = self.created_at.isoformat()
-        dic['updated_at'] = self.updated_at.isoformat()
-        return dic
+  def __init__(self, id, created_at, updated_at):
+    self.id = id
+    self.created_at = created_at
+    self.updated_at = updated_at
 
+  def __str__(self):
+    return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
-    def __str__(self):
-        """definición de str"""
-        return("[{}] ({}) {}".format(self.__class__.__name__,self.id, self.__dict__))
+  def save(self):
+    self.updated_at = datetime.now()
 
-    def save(self):
-        """definición de Save"""
-        self.updated_at = datetime.now()
-        models.storage.new(self)
-        models.storage.save()
+  def to_dict(self):
+    data = self.__dict__.copy()
+    data["__class__"] = self.__class__.__name__
+    data["created_at"] = data["created_at"].isoformat()
+    data["updated_at"] = data["updated_at"].isoformat()
+    return data
