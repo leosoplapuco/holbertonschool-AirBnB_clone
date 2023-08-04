@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-""" Class FileStorage """
+"""clase FileStorage"""
+
 from json import dump, load, dumps
 from os.path import exists
 from models import base_model, user, place, state, city, amenity, review
@@ -16,27 +17,23 @@ name_class = ["BaseModel", "City", "State",
 
 
 class FileStorage:
-    """
-    """
+    """FileStorage"""
     __file_path = "file.json"
     __objects = {}
 
     def all(self):
-        """
-        """
+        """all"""
         return FileStorage.__objects
 
     def new(self, obj):
-        """ sets  the obj with key in __objects
-        """
+        """new"""
         class_name = obj.__class__.__name__
         id = obj.id
         clas_id = class_name + "." + id
         FileStorage.__objects[clas_id] = obj
 
     def save(self):
-        """ file storage
-        """
+        """save"""
         dict_to_json = {}
         for key, value in FileStorage.__objects.items():
             dict_to_json[key] = value.to_dict()
@@ -44,9 +41,7 @@ class FileStorage:
             dump(dict_to_json, fil)
 
     def reload(self):
-        """ if (__file_path) exists deserializes JSON file to __objects
-            elif , do nothing. If the file not exist,
-        """
+        """reload"""
         dic_obj = {}
         FileStorage.__objects = {}
         if (exists(FileStorage.__file_path)):

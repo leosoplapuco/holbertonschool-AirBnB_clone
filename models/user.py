@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""clase User"""
+"""class User"""
 
 import uuid
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """clase User"""
+    """class User"""
     email = ""
     password = ""
     first_name = ""

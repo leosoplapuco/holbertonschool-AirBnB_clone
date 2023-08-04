@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""módulo de la Base"""
+"""módulo para Base"""
 
 import uuid
 from datetime import datetime
@@ -13,7 +13,7 @@ format_dt = "%Y-%m-%dT%H:%M:%S.%f"
 class BaseModel:
     """clase Basemodel"""
     def __init__(self, *args, **kwargs):
-        """Database"""
+        """ Initialization of Database """
         if args is not None and len(args) > 0:
             pass
         if kwargs:
@@ -28,7 +28,7 @@ class BaseModel:
             models.storage.new(self)
 
     def to_dict(self):
-        """definición para to_dict"""
+        """to_dict"""
         
         dic = {}
         for key, item in self.__dict__.items():
@@ -42,12 +42,12 @@ class BaseModel:
 
 
     def __str__(self):
-        """definición para str"""
+        """str"""
         return("[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__))
 
     def save(self):
-        """definición para Save"""
+        """save"""
         self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
