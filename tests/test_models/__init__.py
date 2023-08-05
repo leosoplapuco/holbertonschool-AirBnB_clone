@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 """creamos un unico FileStorage para la aplicación"""
-
-import storage
-from models import base_model, user, place, state, city, amenity, review
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User

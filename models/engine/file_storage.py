@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """clase FileStorage"""
 
-import storage
 from json import dump, load, dumps
 from os.path import exists
 from models import base_model, user, place, state, city, amenity, review
@@ -13,8 +12,7 @@ State = state.State
 City = city.City
 Amenity = amenity.Amenity
 Review = review.Review
-name_class = ["BaseModel", "City", "State",
-              "Place", "Amenity", "Review", "User"]
+name_class = ["BaseModel", "City", "State", "Place", "Amenity", "Review", "User"]
 
 
 class FileStorage:
