@@ -3,7 +3,9 @@
 
 import uuid
 from datetime import datetime
-from models import storage
+#from models import storage
+import storage
+from models import place
 from models.base_model import BaseModel
 
 
