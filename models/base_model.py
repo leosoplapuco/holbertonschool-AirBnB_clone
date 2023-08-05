@@ -43,8 +43,8 @@ class BaseModel:
 
     def __str__(self):
         """str"""
-        return("[{}] ({}) {}".format(self.__class__.__name__,
-                                     self.id, self.__dict__))
+        #return("[{}] ({}) {}".format(self.__class__.__name__,self.id, self.__dict__))
+        return "BaseModel object"
 
     def save(self):
         """save"""
