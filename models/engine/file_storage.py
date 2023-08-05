@@ -4,6 +4,7 @@
 from json import dump, load, dumps
 from os.path import exists
 from models import base_model, user, place, state, city, amenity, review
+import storage
 
 BaseModel = base_model.BaseModel
 User = user.User
@@ -20,6 +21,9 @@ class FileStorage:
     """FileStorage"""
     __file_path = "file.json"
     __objects = {}
+
+    def __init__(self):
+        self.storage = storage
 
     def all(self):
         """all"""
