@@ -3,8 +3,7 @@
 
 import unittest
 from datetime import datetime
-from models import base_model
-from models.base_model import BaseModel
+from models.base_models import BaseModel
 
 class TestBaseModel(unittest.TestCase):
     """TestBaseModel"""

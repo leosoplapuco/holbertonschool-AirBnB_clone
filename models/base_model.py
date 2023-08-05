@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """módulo para Base"""
 
-import models
-import uuid
-from datetime import datetime
 from uuid import uuid4
+from datetime import datetime
 import json
+import models 
 
 format_dt = "%Y-%m-%dT%H:%M:%S.%f"
 

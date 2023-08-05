@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """clase FileStorage"""
 
-from json import dump, load, dumps
-from os.path import exists
-from models import base_model, user, place, state, city, amenity, review
+import json
+import os
 
 BaseModel = base_model.BaseModel
 User = user.User
