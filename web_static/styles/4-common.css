@@ -21,6 +21,7 @@
 h1, h2, h3, h4{
     font-weight: 600;
     color: var(--color-text);
+    margin: 0;
 }
 
 body{
