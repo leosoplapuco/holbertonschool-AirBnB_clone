@@ -177,3 +177,7 @@ span.hundred{
 .reviews ul li p{
     font-size: 12px;
 }
+
+footer{
+    position: unset;
+}

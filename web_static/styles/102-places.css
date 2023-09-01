@@ -176,6 +176,10 @@ span.hundred{
     font-size: 12px;
 }
 
+footer{
+    position: unset;
+}
+
 @media screen and (max-width:800px){
     .filters{
         width: calc(100% - 40px);
